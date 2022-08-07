@@ -1,0 +1,132 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Player.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 40, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "Run",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 14 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 15 ) ],
+"loop": true,
+"name": "WallSlide",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 16 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 3, 3.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 1, 2.5 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 1, 2.5 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 3.25, 3.75 )
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "Idle"
+playing = true
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 17 )
+
+[node name="LeftCheck" type="Area2D" parent="."]
+position = Vector2( -3.5, 0 )
+collision_layer = 2
+collision_mask = 4
+
+[node name="Collider" type="CollisionShape2D" parent="LeftCheck"]
+position = Vector2( 0.5, 0.5 )
+shape = SubResource( 3 )
+
+[node name="RightCheck" type="Area2D" parent="."]
+position = Vector2( 3.5, 0 )
+collision_layer = 2
+collision_mask = 4
+
+[node name="Collider" type="CollisionShape2D" parent="RightCheck"]
+position = Vector2( -0.5, 0.5 )
+shape = SubResource( 18 )
+
+[node name="Trigger" type="Area2D" parent="."]
+collision_mask = 17
+
+[node name="Collider" type="CollisionShape2D" parent="Trigger"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 19 )
+
+[connection signal="body_entered" from="LeftCheck" to="." method="_on_left_check_body_entered"]
+[connection signal="body_exited" from="LeftCheck" to="." method="_on_left_check_body_exited"]
+[connection signal="body_entered" from="RightCheck" to="." method="_on_right_check_body_entered"]
+[connection signal="body_exited" from="RightCheck" to="." method="_on_right_check_body_exited"]
+[connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
+[connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]
