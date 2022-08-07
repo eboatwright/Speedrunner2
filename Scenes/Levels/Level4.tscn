@@ -1,11 +1,11 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Sprites/Tileset.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Prefabs/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sprites/Spikes.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/Hub.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Prefabs/Flag.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Prefabs/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Prefabs/Checkpoint.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Prefabs/Door.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
@@ -371,58 +371,7 @@ points = PoolVector2Array( 4.5071, 0, 8, 0, 8, 8, 4.5071, 8 )
 } ]
 3/z_index = 0
 
-[sub_resource type="DynamicFontData" id=27]
-antialiased = false
-font_path = "res://PICO-8.ttf"
-
-[sub_resource type="DynamicFont" id=28]
-size = 4
-outline_size = 1
-font_data = SubResource( 27 )
-
-[sub_resource type="Animation" id=23]
-resource_name = "Bounce"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("TextAnimator/Text:rect_position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 1.5 ), Vector2( 0, 7.5 ) ]
-}
-
-[sub_resource type="Animation" id=24]
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("TextAnimator/Text:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 1.5 ) ]
-}
-
-[sub_resource type="DynamicFontData" id=25]
-antialiased = false
-font_path = "res://PICO-8.ttf"
-
-[sub_resource type="DynamicFont" id=26]
-size = 8
-outline_size = 1
-outline_color = Color( 0.513726, 0.462745, 0.611765, 1 )
-font_data = SubResource( 25 )
-
-[node name="Hub" type="Node2D"]
-script = ExtResource( 4 )
+[node name="LevelTemplate" type="Node2D"]
 
 [node name="Tilemap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -430,7 +379,7 @@ cell_size = Vector2( 8, 8 )
 collision_layer = 4
 collision_mask = 3
 format = 1
-tile_data = PoolIntArray( -655331, 0, 0, -655330, 2, 0, -589795, 6, 0, -589794, 8, 0, -524259, 12, 0, -524258, 12, 0, -458744, 0, 0, -458743, 1, 0, -458742, 1, 0, -458741, 1, 0, -458740, 1, 0, -458739, 1, 0, -458738, 2, 0, -458723, 12, 0, -458722, 12, 0, -393208, 3, 0, -393207, 5, 0, -393206, 5, 0, -393205, 5, 0, -393204, 5, 0, -393203, 5, 0, -393202, 4, 0, -393197, 0, 0, -393196, 1, 0, -393195, 1, 0, -393194, 1, 0, -393193, 1, 0, -393192, 2, 0, -393187, 12, 0, -393186, 12, 0, -327661, 3, 0, -327660, 5, 0, -327659, 5, 0, -327658, 5, 0, -327657, 5, 0, -327656, 4, 0, -327651, 12, 0, -327650, 12, 0, -262115, 12, 0, -262114, 12, 0, -196579, 12, 0, -196578, 12, 0, -131043, 7, 0, -131042, 11, 0, -65515, 0, 0, -65514, 1, 0, -65513, 1, 0, -65512, 1, 0, -65511, 1, 0, -65510, 2, 0, 11, 0, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 2, 0, 21, 3, 0, 22, 5, 0, 23, 5, 0, 24, 5, 0, 25, 5, 0, 26, 4, 0, 131065, 0, 0, 131066, 1, 0, 131067, 1, 0, 131068, 1, 0, 131069, 1, 0, 131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 2, 0, 65547, 3, 0, 65548, 5, 0, 65549, 5, 0, 65550, 5, 0, 65551, 5, 0, 65552, 4, 0, 196601, 6, 0, 196602, 5, 0, 196603, 5, 0, 196604, 5, 0, 196605, 5, 0, 196606, 5, 0, 196607, 5, 0, 131072, 5, 0, 131073, 5, 0, 131074, 5, 0, 131075, 5, 0, 131076, 5, 0, 131077, 5, 0, 131078, 8, 0, 262137, 7, 0, 262138, 12, 0, 262139, 12, 0, 262140, 12, 0, 262141, 12, 0, 262142, 12, 0, 262143, 12, 0, 196608, 12, 0, 196609, 12, 0, 196610, 12, 0, 196611, 12, 0, 196612, 12, 0, 196613, 12, 0, 196614, 11, 0, 327692, 14, 0, 786447, 9, 0, 786451, 14, 0 )
+tile_data = PoolIntArray( 327692, 14, 0, 786447, 9, 0, 786451, 14, 0 )
 
 [node name="SpikesTilemap" type="TileMap" parent="."]
 tile_set = SubResource( 21 )
@@ -442,36 +391,8 @@ format = 1
 [node name="Checkpoints" type="Node2D" parent="."]
 
 [node name="Checkpoint1" parent="Checkpoints" instance=ExtResource( 6 )]
-position = Vector2( 0, 2 )
 
-[node name="Doors" type="Node2D" parent="."]
-
-[node name="Door1" parent="Doors" instance=ExtResource( 7 )]
-position = Vector2( -40, 2 )
-
-[node name="Door2" parent="Doors" instance=ExtResource( 7 )]
-position = Vector2( 40, 2 )
-
-[node name="Door3" parent="Doors" instance=ExtResource( 7 )]
-position = Vector2( 112, -6 )
-
-[node name="Door4" parent="Doors" instance=ExtResource( 7 )]
-position = Vector2( 192, -14 )
-
-[node name="Door5" parent="Doors" instance=ExtResource( 7 )]
-position = Vector2( 176, -54 )
-
-[node name="MoreToCome" type="Label" parent="Doors"]
-margin_left = 66.0
-margin_top = -74.0
-margin_right = 118.0
-margin_bottom = -60.0
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-custom_colors/font_outline_modulate = Color( 0.513726, 0.462745, 0.611765, 1 )
-custom_fonts/font = SubResource( 28 )
-text = "MORE TO COME!"
-align = 1
-valign = 1
+[node name="Flag" parent="." instance=ExtResource( 4 )]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
@@ -481,19 +402,4 @@ current = true
 smoothing_enabled = true
 smoothing_speed = 7.5
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TextAnimator" type="AnimationPlayer" parent="CanvasLayer"]
-autoplay = "Bounce"
-anims/Bounce = SubResource( 23 )
-anims/RESET = SubResource( 24 )
-
-[node name="Text" type="Label" parent="CanvasLayer/TextAnimator"]
-margin_top = 1.5
-margin_right = 160.0
-margin_bottom = 15.5
-custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
-custom_fonts/font = SubResource( 26 )
-text = "HUB"
-align = 1
-valign = 1
+[node name="HUD" parent="." instance=ExtResource( 5 )]
