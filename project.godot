@@ -11,8 +11,13 @@ config_version=4
 [application]
 
 config/name="Speedrunner2"
-run/main_scene="res://Scenes/Menu.tscn"
+run/main_scene="res://Scenes/Splash.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+SaveLoad="*res://Scenes/SaveLoad.tscn"
+SoundPlayer="*res://Scenes/SoundPlayer.tscn"
 
 [display]
 

@@ -393,7 +393,6 @@ format = 1
 [node name="Checkpoint1" parent="Checkpoints" instance=ExtResource( 6 )]
 
 [node name="Flag" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 

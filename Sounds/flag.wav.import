@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flag.wav-61801fab949ad78cc6fb1c52b27cc07b.sample"
+
+[deps]
+
+source_file="res://Sounds/flag.wav"
+dest_files=[ "res://.import/flag.wav-61801fab949ad78cc6fb1c52b27cc07b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

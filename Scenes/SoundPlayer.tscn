@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sounds/jump.wav" type="AudioStream" id=1]
+[ext_resource path="res://Scripts/SoundPlayer.gd" type="Script" id=2]
+
+[node name="SoundPlayer" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )

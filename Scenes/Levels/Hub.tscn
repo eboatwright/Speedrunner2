@@ -439,7 +439,6 @@ position = Vector2( 0, 2 )
 
 [node name="Door1" parent="Doors" instance=ExtResource( 7 )]
 position = Vector2( -40, 2 )
-scene = "res://Scenes/Levels/Level1.tscn"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 

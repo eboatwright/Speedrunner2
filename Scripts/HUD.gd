@@ -11,18 +11,11 @@ func _physics_process(delta):
 	if running:
 		timer += delta;
 	
-	var minutes = str(floor(timer / 60));
-	var seconds = "%.2f" % (fmod(timer, 60));
-	var time = minutes + ":";
-	
-	if float(seconds) < 10.0:
-		time += "0";
-	time += seconds;
-	
-	get_node("TimerAnimator/Text").set_text(time);
+	get_node("TimerAnimator/Text").set_text(SaveLoad.format_time(timer));
 
 func start():
 	running = true;
 
 func stop():
 	running = false;
+	SaveLoad.write(get_tree().get_current_scene().get_name(), timer);

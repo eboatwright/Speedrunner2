@@ -1,31 +1,40 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/Door.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Door.gd" type="Script" id=2]
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 12, 12 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 12, 0, 12, 12 )
 
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 12, 12 )
+
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 4 ) ],
-"loop": true,
-"name": "Open",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
 "name": "Closed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "Open",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 5.5 )
+
+[sub_resource type="DynamicFontData" id=5]
+antialiased = false
+font_path = "res://PICO-8.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 4
+outline_size = 1
+font_data = SubResource( 5 )
 
 [node name="Door" type="Area2D"]
 collision_layer = 32
@@ -38,6 +47,30 @@ animation = "Closed"
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.5 )
 shape = SubResource( 1 )
+
+[node name="LevelName" type="Label" parent="."]
+margin_left = -22.0
+margin_top = -23.0
+margin_right = 23.0
+margin_bottom = -18.0
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_outline_modulate = Color( 0.513726, 0.462745, 0.611765, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "LEVEL X"
+align = 1
+valign = 1
+
+[node name="Record" type="Label" parent="."]
+margin_left = -44.0
+margin_top = -15.0
+margin_right = 44.0
+margin_bottom = -10.0
+custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
+custom_colors/font_outline_modulate = Color( 0.513726, 0.462745, 0.611765, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "BEST: 0:00.00"
+align = 1
+valign = 1
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
