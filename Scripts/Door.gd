@@ -19,6 +19,7 @@ func _physics_process(delta):
 	if open:
 		get_node("Sprite").animation = "Open";
 		if Input.is_action_just_pressed("enter_door") && player_overlapping:
+			SoundPlayer.button();
 			get_tree().change_scene("res://Scenes/Levels/Level" + self.name.trim_prefix("Door") + ".tscn");
 	else:
 		get_node("Sprite").animation = "Closed";

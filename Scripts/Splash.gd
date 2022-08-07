@@ -2,6 +2,9 @@ extends Control;
 
 var timer = 2.0;
 
+func _ready():
+	SoundPlayer.flag();
+
 func _physics_process(delta):
 	timer -= delta;
 	if timer <= 0.0:
