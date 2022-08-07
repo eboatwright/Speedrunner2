@@ -50,6 +50,7 @@ func _physics_process(delta):
 	_perform_animations();
 	
 	if Input.is_action_just_pressed("restart"):
+		SoundPlayer.lose();
 		get_tree().reload_current_scene();
 	
 	if !started_moving:
