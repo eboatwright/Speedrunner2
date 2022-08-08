@@ -379,7 +379,7 @@ cell_size = Vector2( 8, 8 )
 collision_layer = 4
 collision_mask = 3
 format = 1
-tile_data = PoolIntArray( 327692, 14, 0, 786447, 9, 0, 786451, 14, 0 )
+tile_data = PoolIntArray( -524283, 0, 0, -524282, 2, 0, -458747, 6, 0, -458746, 8, 0, -393211, 12, 0, -393210, 12, 0, -327675, 7, 0, -327674, 11, 0, 5, 0, 0, 6, 2, 0, 131069, 0, 0, 131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 2, 0, 65541, 6, 0, 65542, 8, 0, 65545, 0, 0, 65546, 1, 0, 65547, 1, 0, 65548, 2, 0, 196605, 6, 0, 196606, 5, 0, 196607, 5, 0, 131072, 5, 0, 131073, 5, 0, 131074, 8, 0, 131077, 7, 0, 131078, 11, 0, 131081, 6, 0, 131082, 5, 0, 131083, 5, 0, 131084, 8, 0, 262141, 7, 0, 262142, 12, 0, 262143, 12, 0, 196608, 12, 0, 196609, 12, 0, 196610, 11, 0, 196617, 7, 0, 196618, 12, 0, 196619, 12, 0, 196620, 11, 0, 327692, 14, 0, 786447, 9, 0, 786451, 14, 0 )
 
 [node name="SpikesTilemap" type="TileMap" parent="."]
 tile_set = SubResource( 21 )
@@ -387,12 +387,15 @@ cell_size = Vector2( 8, 8 )
 collision_layer = 16
 collision_mask = 8
 format = 1
+tile_data = PoolIntArray( -262139, 2, 0, -262138, 2, 0, -65531, 0, 0, -65530, 0, 0 )
 
 [node name="Checkpoints" type="Node2D" parent="."]
 
 [node name="Checkpoint1" parent="Checkpoints" instance=ExtResource( 6 )]
+position = Vector2( 0, 2 )
 
 [node name="Flag" parent="." instance=ExtResource( 4 )]
+position = Vector2( -127, -92 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
