@@ -111,7 +111,7 @@ func _handle_jump(delta):
 		SoundPlayer.jump();
 	
 	if Input.is_action_just_released("ui_up") && velocity.y < 0.0:
-		velocity.y *= JUMP_CUTOFF;
+		velocity *= JUMP_CUTOFF;
 
 
 func _perform_friction():
