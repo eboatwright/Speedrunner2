@@ -6,9 +6,10 @@ signal finished;
 const GRAVITY = 16.8;
 const MOVE_SPEED = 31.0;
 const JUMP_HEIGHT = 230.0;
-const JUMP_CUTOFF = 0.68;
-const WALL_JUMP_VEL = Vector2(140.0, 300.0);
+const JUMP_CUTOFF = Vector2(0.82, 0.68);
+const WALL_JUMP_VEL = Vector2(140.0, 410.0);
 const FRICTION = 0.76;
+const SLIDE_FRICTION = 0.55;
 const AIR_FRICTION = 0.80;
 const COYOTE_TIME = 0.1;
 const FOOTSTEP_TIME = 0.25;
@@ -92,23 +93,24 @@ func _handle_ground_detection(delta):
 func _handle_jump(delta):
 	jump_timer -= delta;
 	if Input.is_action_just_pressed("ui_up"):
+		jump_timer = COYOTE_TIME;
+	
+	if jump_timer > 0.0:
 		if left_check:
+			jump_timer = 0.0;
 			velocity = Vector2(WALL_JUMP_VEL.x, -WALL_JUMP_VEL.y);
 			facing_dir = 1.0;
 			SoundPlayer.jump();
 		elif right_check:
+			jump_timer = 0.0;
 			velocity = Vector2(-WALL_JUMP_VEL.x, -WALL_JUMP_VEL.y);
 			facing_dir = -1.0;
 			SoundPlayer.jump();
-		else:
-			jump_timer = COYOTE_TIME;
-	
-	if jump_timer > 0.0 && coyote_timer > 0.0:
-		jump_timer = 0.0;
-		coyote_timer = 0.0;
-		
-		velocity.y = -JUMP_HEIGHT;
-		SoundPlayer.jump();
+		elif coyote_timer > 0.0:
+			jump_timer = 0.0;
+			coyote_timer = 0.0;
+			velocity.y = -JUMP_HEIGHT;
+			SoundPlayer.jump();
 	
 	if Input.is_action_just_released("ui_up") && velocity.y < 0.0:
 		velocity *= JUMP_CUTOFF;
@@ -121,7 +123,7 @@ func _perform_friction():
 		else:
 			velocity.x *= AIR_FRICTION;
 	if on_wall:
-		velocity.y *= FRICTION;
+		velocity.y *= SLIDE_FRICTION;
 
 func _perform_gravity():
 	velocity.y += GRAVITY;

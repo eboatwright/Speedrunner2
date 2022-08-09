@@ -1,8 +1,8 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Sprites/Tileset.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Prefabs/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Sprites/Spikes.png" type="Texture" id=3]
+[ext_resource path="res://SpikeMap.tres" type="TileSet" id=3]
 [ext_resource path="res://Scenes/Prefabs/Flag.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Prefabs/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Prefabs/Checkpoint.tscn" type="PackedScene" id=6]
@@ -273,104 +273,6 @@ points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
 } ]
 12/z_index = 0
 
-[sub_resource type="ConvexPolygonShape2D" id=17]
-points = PoolVector2Array( 8, 8, 0, 8, 0, 4.67382, 8, 4.58035 )
-
-[sub_resource type="ConvexPolygonShape2D" id=18]
-points = PoolVector2Array( 0, 0, 3.40322, 0, 3.49668, 8, 0, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=19]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 3.1784, 0, 3.1784 )
-
-[sub_resource type="ConvexPolygonShape2D" id=20]
-points = PoolVector2Array( 4.5071, 0, 8, 0, 8, 8, 4.5071, 8 )
-
-[sub_resource type="TileSet" id=21]
-0/name = "Spikes.png 0"
-0/texture = ExtResource( 3 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 8, 8 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 17 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 17 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
-1/name = "Spikes.png 1"
-1/texture = ExtResource( 3 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 8, 0, 8, 8 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 18 )
-1/shape_one_way = false
-1/shape_one_way_margin = 1.0
-1/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 18 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-1/z_index = 0
-2/name = "Spikes.png 2"
-2/texture = ExtResource( 3 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 16, 0, 8, 8 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape = SubResource( 19 )
-2/shape_one_way = false
-2/shape_one_way_margin = 1.0
-2/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 19 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-2/z_index = 0
-3/name = "Spikes.png 3"
-3/texture = ExtResource( 3 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 24, 0, 8, 8 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 0, 0 )
-3/navigation_offset = Vector2( 0, 0 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape = SubResource( 20 )
-3/shape_one_way = false
-3/shape_one_way_margin = 1.0
-3/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 20 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-3/z_index = 0
-
 [node name="Level2" type="Node2D"]
 
 [node name="Tilemap" type="TileMap" parent="."]
@@ -382,7 +284,7 @@ format = 1
 tile_data = PoolIntArray( -1638364, 0, 0, -1638363, 2, 0, -1572828, 6, 0, -1572827, 8, 0, -1507292, 12, 0, -1507291, 12, 0, -1441756, 12, 0, -1441755, 12, 0, -1376232, 0, 0, -1376231, 1, 0, -1376230, 1, 0, -1376229, 1, 0, -1376228, 1, 0, -1376227, 1, 0, -1376226, 1, 0, -1376225, 2, 0, -1376220, 12, 0, -1376219, 12, 0, -1310696, 3, 0, -1310695, 5, 0, -1310694, 5, 0, -1310693, 5, 0, -1310692, 5, 0, -1310691, 5, 0, -1310690, 5, 0, -1310689, 8, 0, -1310684, 12, 0, -1310683, 12, 0, -1245154, 12, 0, -1245153, 12, 0, -1245148, 12, 0, -1245147, 12, 0, -1179618, 12, 0, -1179617, 12, 0, -1179612, 12, 0, -1179611, 12, 0, -1114082, 12, 0, -1114081, 12, 0, -1114076, 12, 0, -1114075, 12, 0, -1048546, 12, 0, -1048545, 12, 0, -1048540, 12, 0, -1048539, 12, 0, -983010, 7, 0, -983009, 11, 0, -983004, 12, 0, -983003, 12, 0, -917468, 12, 0, -917467, 12, 0, -851967, 0, 0, -851966, 2, 0, -851932, 7, 0, -851931, 11, 0, -786431, 6, 0, -786430, 8, 0, -720895, 12, 0, -720894, 12, 0, -720869, 0, 0, -720868, 1, 0, -720867, 1, 0, -720866, 1, 0, -720865, 1, 0, -720864, 2, 0, -655359, 12, 0, -655358, 12, 0, -655342, 0, 0, -655341, 1, 0, -655340, 1, 0, -655339, 1, 0, -655338, 2, 0, -655333, 3, 0, -655332, 5, 0, -655331, 5, 0, -655330, 5, 0, -655329, 5, 0, -655328, 4, 0, -589823, 12, 0, -589822, 12, 0, -589816, 0, 0, -589815, 1, 0, -589814, 1, 0, -589813, 1, 0, -589812, 1, 0, -589811, 2, 0, -589806, 3, 0, -589805, 5, 0, -589804, 5, 0, -589803, 5, 0, -589802, 4, 0, -524287, 12, 0, -524286, 12, 0, -524280, 6, 0, -524279, 5, 0, -524278, 5, 0, -524277, 5, 0, -524276, 5, 0, -524275, 4, 0, -458751, 12, 0, -458750, 12, 0, -458744, 12, 0, -458743, 12, 0, -393215, 12, 0, -393214, 12, 0, -393208, 12, 0, -393207, 12, 0, -327679, 12, 0, -327678, 12, 0, -327672, 12, 0, -327671, 12, 0, -262143, 12, 0, -262142, 12, 0, -262136, 12, 0, -262135, 12, 0, -196607, 12, 0, -196606, 12, 0, -196600, 12, 0, -196599, 12, 0, -131071, 7, 0, -131070, 11, 0, -131064, 12, 0, -131063, 12, 0, -65528, 12, 0, -65527, 12, 0, 8, 7, 0, 9, 11, 0, 131067, 0, 0, 131068, 1, 0, 131069, 1, 0, 131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 2, 0, 196603, 6, 0, 196604, 5, 0, 196605, 5, 0, 196606, 5, 0, 196607, 5, 0, 131072, 5, 0, 131073, 5, 0, 131074, 5, 0, 131075, 5, 0, 131076, 8, 0, 262139, 7, 0, 262140, 12, 0, 262141, 12, 0, 262142, 12, 0, 262143, 12, 0, 196608, 12, 0, 196609, 12, 0, 196610, 12, 0, 196611, 12, 0, 196612, 11, 0, 327692, 14, 0, 786447, 9, 0, 786451, 14, 0 )
 
 [node name="SpikesTilemap" type="TileMap" parent="."]
-tile_set = SubResource( 21 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 8, 8 )
 collision_layer = 16
 collision_mask = 8
