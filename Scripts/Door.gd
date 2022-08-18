@@ -13,7 +13,7 @@ func _ready():
 	if data.has(level_name):
 		best = SaveLoad.format_time(data[level_name]);
 		
-	if best == "NAN":
+	if str(best) == "NAN":
 		get_node("Record").set_text("");
 	else:
 		get_node("Record").set_text("BEST: " + str(best));
