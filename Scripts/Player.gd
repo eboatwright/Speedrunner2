@@ -5,7 +5,7 @@ signal finished;
 
 const GRAVITY = 16.8;
 const MOVE_SPEED = 31.0;
-const ICE_MOVE_SPEED = 2.8;
+const ICE_MOVE_SPEED = 2.46;
 const JUMP_HEIGHT = 230.0;
 const JUMP_CUTOFF = Vector2(0.82, 0.68);
 const WALL_JUMP_VEL = Vector2(140.0, 410.0);
@@ -13,8 +13,8 @@ const WALL_JUMP_VEL = Vector2(140.0, 410.0);
 const FRICTION = 0.76;
 const SLIDE_FRICTION = 0.55;
 const AIR_FRICTION = 0.80;
-const ICE_FRICTION = 0.98;
-const ICE_AIR_FRICTION = 0.985;
+const ICE_FRICTION = 0.984;
+const ICE_AIR_FRICTION = 0.99;
 
 const COYOTE_TIME = 0.1;
 const FOOTSTEP_TIME = 0.25;
@@ -48,7 +48,8 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		var tile_standing_on = tilemap.get_cellv((position / 8.0).floor() + Vector2(0.0, 1.0));
-		on_ice = (tile_standing_on == 13 || tile_standing_on == 14 || tile_standing_on == 15);
+		if tile_standing_on != -1:
+			on_ice = (tile_standing_on == 13 || tile_standing_on == 14 || tile_standing_on == 15);
 	
 	_handle_horizontal_movement(delta);
 	_handle_ground_detection(delta);

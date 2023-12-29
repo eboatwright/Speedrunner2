@@ -105,7 +105,7 @@ points = PoolVector2Array( 4.5071, 0, 8, 0, 8, 8, 4.5071, 8 )
 } ]
 3/z_index = 0
 
-[node name="LevelTemplate" type="Node2D"]
+[node name="Level9" type="Node2D"]
 
 [node name="Tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
