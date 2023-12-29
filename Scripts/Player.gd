@@ -5,12 +5,17 @@ signal finished;
 
 const GRAVITY = 16.8;
 const MOVE_SPEED = 31.0;
+const ICE_MOVE_SPEED = 2.8;
 const JUMP_HEIGHT = 230.0;
 const JUMP_CUTOFF = Vector2(0.82, 0.68);
 const WALL_JUMP_VEL = Vector2(140.0, 410.0);
+
 const FRICTION = 0.76;
 const SLIDE_FRICTION = 0.55;
 const AIR_FRICTION = 0.80;
+const ICE_FRICTION = 0.98;
+const ICE_AIR_FRICTION = 0.985;
+
 const COYOTE_TIME = 0.1;
 const FOOTSTEP_TIME = 0.25;
 var footstep_timer = 0.0;
@@ -24,10 +29,15 @@ var left_check = false;
 var right_check = false;
 var on_wall = false;
 var has_hit_ground_after_wall_jump = true;
+var on_ice = false;
 
 var current_checkpoint = "Checkpoint1";
 
 var started_moving = false;
+
+var finished = false;
+
+onready var tilemap: TileMap = get_node("../Tilemap");
 
 
 func _ready():
@@ -35,6 +45,10 @@ func _ready():
 
 func _physics_process(delta):
 	on_wall = left_check || right_check;
+	
+	if is_on_floor():
+		var tile_standing_on = tilemap.get_cellv((position / 8.0).floor() + Vector2(0.0, 1.0));
+		on_ice = (tile_standing_on == 13 || tile_standing_on == 14 || tile_standing_on == 15);
 	
 	_handle_horizontal_movement(delta);
 	_handle_ground_detection(delta);
@@ -80,7 +94,10 @@ func _handle_horizontal_movement(delta):
 			facing_dir = 1.0;
 	
 	if (is_on_floor() || !on_wall) && has_hit_ground_after_wall_jump:
-		velocity.x += input.x * MOVE_SPEED;
+		var speed = MOVE_SPEED;
+		if on_ice:
+			speed = ICE_MOVE_SPEED;
+		velocity.x += input.x * speed;
 
 func _handle_ground_detection(delta):
 	coyote_timer -= delta;
@@ -118,7 +135,12 @@ func _handle_jump(delta):
 
 func _perform_friction():
 	if has_hit_ground_after_wall_jump:
-		if is_on_floor():
+		if on_ice:
+			if is_on_floor():
+				velocity.x *= ICE_FRICTION;
+			else:
+				velocity.x *= ICE_AIR_FRICTION;
+		elif is_on_floor():
 			velocity.x *= FRICTION;
 		else:
 			velocity.x *= AIR_FRICTION;
@@ -169,7 +191,8 @@ func _respawn():
 func _on_trigger_area_entered(area):
 	if area.name.find("Checkpoint") != -1:
 		_handle_checkpoint(area);
-	if area.name == "Flag":
+	if area.name == "Flag" && !finished:
+		finished = true;
 		SoundPlayer.flag();
 		emit_signal("finished");
 
