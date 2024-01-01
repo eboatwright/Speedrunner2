@@ -128,6 +128,9 @@ tile_data = PoolIntArray( -1441725, 3, 0, -1376189, 3, 0, -1310653, 3, 0, -12451
 [node name="Checkpoint1" parent="Checkpoints" instance=ExtResource( 6 )]
 position = Vector2( 0, 2 )
 
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource( 6 )]
+position = Vector2( 288, -54 )
+
 [node name="Flag" parent="." instance=ExtResource( 4 )]
 position = Vector2( 592, -6 )
 
