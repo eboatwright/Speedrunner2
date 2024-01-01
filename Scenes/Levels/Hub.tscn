@@ -210,7 +210,7 @@ position = Vector2( 188, -158 )
 [node name="Door10" parent="Doors" instance=ExtResource( 7 )]
 position = Vector2( 264, -158 )
 
-[node name="MoreToCome" type="Label" parent="Doors"]
+[node name="TheEnd" type="Label" parent="Doors"]
 margin_left = 315.0
 margin_top = -182.0
 margin_right = 367.0
@@ -218,7 +218,8 @@ margin_bottom = -168.0
 custom_colors/font_color = Color( 1, 0.945098, 0.909804, 1 )
 custom_colors/font_outline_modulate = Color( 0.513726, 0.462745, 0.611765, 1 )
 custom_fonts/font = SubResource( 28 )
-text = "COMING SOON!"
+text = "THE END
+(FOR NOW)"
 align = 1
 valign = 1
 
